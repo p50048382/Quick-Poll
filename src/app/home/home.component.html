@@ -1,0 +1,29 @@
+<div class="container border p-3 mat-elevation-z4">
+  <h5 class="mb-1">Quick Polls</h5>
+  <!-- <hr /> -->
+  <mat-tab-group animationDuration="0ms" mat-stretch-tabs>
+    <div class="polls-tab" *ngFor="let poll of polls">
+      <mat-tab [label]="poll.pollName" *ngIf="!submittedPolls[poll.pollName]">
+        <!-- *For form -->
+        <app-poll-tab [poll]="poll" (submitted)="OnSubmit(poll)"></app-poll-tab>
+      </mat-tab>
+      <!-- *Comment this for Design 1 -->
+      <mat-tab
+        [label]="poll.pollName + results"
+        *ngIf="submittedPolls[poll.pollName]"
+      >
+        <app-results-tab [chartLables]="poll.options"></app-results-tab>
+      </mat-tab>
+    </div>
+
+    <!--* Comment this for Design 2 -->
+    <!-- <div class="polls-tab" *ngFor="let poll of polls">
+      <mat-tab
+        [label]="poll.pollName + results"
+        *ngIf="submittedPolls[poll.pollName]"
+      >
+        <app-results-tab [chartLables]="poll.options"></app-results-tab>
+      </mat-tab>
+    </div> -->
+  </mat-tab-group>
+</div>

@@ -4,7 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-poll-tab',
-  templateUrl: './poll-tab.component.html',
+  // templateUrl: './poll-tab.component.html',
+  templateUrl: './poll-tab1.component.html',
   styleUrls: ['./poll-tab.component.css'],
 })
 export class PollTabComponent implements OnInit {
@@ -17,7 +18,7 @@ export class PollTabComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.poll);
+    // console.log(this.poll);
   }
   onSubmit() {
     // console.log(this.form);

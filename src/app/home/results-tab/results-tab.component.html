@@ -1,4 +1,6 @@
-<div style="position: relative; height: 40vh; width: 80vw;">
+<!-- *Horizontal bar chart working fine -->
+
+<!-- <div style="position: relative; height: 40vh; width: 80vw;">
   <canvas
     baseChart
     [datasets]="barChartData"
@@ -6,16 +8,53 @@
     [options]="barChartOptions"
     [legend]="barChartLegend"
     [chartType]="barChartType"
-  ></canvas>
+  ></canvas> -->
 
-  <!--* Add this for hover (chartHover)="chartHovered($event)" -->
-  <!--* Add this for hover  (chartClick)="chartClicked($event)" -->
-</div>
-<!-- <button
-            mat-button
-            mat-raised-button
-            color="primary"
-            (click)="randomize()"
+<!--* Add this for hover (chartHover)="chartHovered($event)" -->
+<!--* Add this for hover  (chartClick)="chartClicked($event)" -->
+<!-- </div> -->
+
+<!-- ?Working with pie chart -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ question }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <div>
+        <div
+          class="chart"
+          style="position: relative; height: 40vh; width: 75vw;"
+        >
+          <canvas
+            baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [legend]="pieChartLegend"
           >
-            Update
-          </button> -->
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<!-- <div>
+  <div>
+    <div class="chart" style="position: relative; height: 40vh; width: 80vw;">
+      <canvas
+        baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+        [legend]="pieChartLegend"
+      >
+      </canvas>
+    </div>
+  </div>
+</div> -->
+
+<!-- [plugins]="pieChartPlugins"
+  [colors]="pieChartColors" -->

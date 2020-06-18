@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PollService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  getPollsData() {
+    return this.http.get('http://localhost:3000/polls');
+  }
+  getPollSummary() {
+    return this.http.get('http://localhost:3000/pollSummary');
+  }
+
   getQuestions() {
     let questions = [
       {

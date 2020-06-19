@@ -30,7 +30,10 @@
     <div class="polls-tab" *ngFor="let poll of odataPolls">
       <mat-tab [label]="poll.PollId" *ngIf="!submittedPolls[poll.PollId]">
         <!-- *For form -->
-        <app-poll-tab [poll]="poll" (submitted)="OnSubmit(poll)"></app-poll-tab>
+        <app-poll-tab
+          [poll]="poll"
+          (submitted)="OnSubmit($event, poll)"
+        ></app-poll-tab>
       </mat-tab>
     </div>
     <div class="polls-tab" *ngFor="let poll of odataSummary">

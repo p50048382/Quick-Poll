@@ -23,16 +23,17 @@ export class HomeComponent implements OnInit {
   submittedPolls = {};
   constructor(private http: HttpClient, private pollService: PollService) {}
   ngOnInit(): void {
-    this.polls = this.pollService.getQuestions();
-    // console.log(this.polls);
-    this.polls.forEach((poll) => {
-      this.submittedPolls[poll.pollName] = false;
-    });
+    // this.polls = this.pollService.getQuestions();
+    // // console.log(this.polls);
+    // this.polls.forEach((poll) => {
+    //   this.submittedPolls[poll.pollName] = false;
+    // });
 
     // *Working with odata
     this.getPollData();
     this.getPollSummary();
     // console.log(this.polls);
+    console.log(this.submittedPolls);
   }
 
   getPollData() {
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit {
         questionObj['QText'] = Que.content.properties.QText.__text;
         questionObj['Response'] = Que.content.properties.Response.__text;
         questionObj['options'] = [];
+        this.submittedPolls[Que.content.properties.PollId.__text] = false;
 
         //* Here the question object has been made
         this.odataPolls.push(questionObj); //*Now each object is pushed into the poll
@@ -113,10 +115,18 @@ export class HomeComponent implements OnInit {
     console.log(poll);
     return true;
   }
-  OnSubmit(poll) {
+  OnSubmit(form, poll) {
+    console.log(form);
     console.log(poll);
-    console.log(this.submittedPolls);
-    this.submittedPolls[poll.pollName] = true;
-    console.log(this.submittedPolls[poll.pollName]);
+
+    this.postData(form, poll); //* Send the data to backend
+  }
+  postData(form, poll) {
+    console.log(form.controls.questionControl.value);
+    // ? Here we can call the post data api.
+    // ? After posting the data destroy the submitted poll
+    this.submittedPolls[poll.PollId] = true; //*Destroying the component
+
+    // ?Call the getPollSummary() function again so that the results get updated.
   }
 }

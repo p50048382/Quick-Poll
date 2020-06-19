@@ -22,6 +22,6 @@ export class PollTabComponent implements OnInit {
   }
   onSubmit() {
     // console.log(this.form);
-    this.submitted.emit(this.poll);
+    this.submitted.emit(this.form);
   }
 }

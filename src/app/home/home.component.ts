@@ -16,7 +16,8 @@ export interface poll {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  results = ' Results';
+  // results = ' Results';
+  results = '';
   polls;
   odataPolls = [];
   odataSummary = [];
@@ -45,6 +46,8 @@ export class HomeComponent implements OnInit {
         res['feed']['entry'][0]['link'][1]['inline']['feed']['entry'];
       questionSet.forEach((Que) => {
         let questionObj = {};
+
+        questionObj['PollName'] = Que.content.properties.PollName.__text;
         questionObj['PollId'] = Que.content.properties.PollId.__text;
         questionObj['QText'] = Que.content.properties.QText.__text;
         questionObj['Response'] = Que.content.properties.Response.__text;
@@ -75,12 +78,14 @@ export class HomeComponent implements OnInit {
     });
   }
   getPollSummary() {
+    this.odataSummary = [];
     this.pollService.getPollSummary().subscribe((res) => {
       // console.log(res);
-      res['feed']['entry'][0]['link'][2]['inline']['feed']['entry'].forEach(
+      res['feed']['entry'][0]['link'][1]['inline']['feed']['entry'].forEach(
         (Que) => {
           let questionObj = {};
           questionObj['PollId'] = Que.content.properties.PollId.__text;
+          questionObj['PollName'] = Que.content.properties.PollName.__text;
           questionObj['QText'] = Que.content.properties.QText.__text;
           questionObj['Response'] = Que.content.properties.Response.__text;
           questionObj['options'] = [];
@@ -89,8 +94,8 @@ export class HomeComponent implements OnInit {
         }
       );
       // console.log(this.odataSummary);
-
-      res['feed']['entry'][0]['link'][1]['inline']['feed']['entry'].forEach(
+      console.log(res);
+      res['feed']['entry'][0]['link'][2]['inline']['feed']['entry'].forEach(
         (option) => {
           // console.log(option);
 
@@ -128,5 +133,6 @@ export class HomeComponent implements OnInit {
     this.submittedPolls[poll.PollId] = true; //*Destroying the component
 
     // ?Call the getPollSummary() function again so that the results get updated.
+    this.getPollSummary();
   }
 }

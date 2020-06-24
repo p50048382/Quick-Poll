@@ -7,11 +7,17 @@ import { HttpClient } from '@angular/common/http';
 export class PollService {
   constructor(private http: HttpClient) {}
 
+  // getPollsData() {
+  //   return this.http.get('http://localhost:3000/polls');
+  // }
+  // getPollSummary() {
+  //   return this.http.get('http://localhost:3000/pollSummary');
+  // }
   getPollsData() {
-    return this.http.get('http://localhost:3000/polls');
+    return this.http.get('http://localhost:3000/polls1');
   }
   getPollSummary() {
-    return this.http.get('http://localhost:3000/pollSummary');
+    return this.http.get('http://localhost:3000/pollSummary1');
   }
 
   getQuestions() {

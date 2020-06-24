@@ -1,6 +1,7 @@
-<div class="container border p-3 mat-elevation-z4">
-  <h5 class="mb-1">Quick Polls</h5>
-  <!-- <hr /> -->
+<div
+  class="container border p-1 mat-elevation-z4"
+  style="width: 346px !important; height: 346px !important;"
+>
   <mat-tab-group animationDuration="0ms" mat-stretch-tabs>
     <!-- *This is for local data which is working fine. -->
     <!-- <div class="polls-tab" *ngFor="let poll of polls">
@@ -28,7 +29,7 @@
 
     <!-- *Working with the odata contents -->
     <div class="polls-tab" *ngFor="let poll of odataPolls">
-      <mat-tab [label]="poll.PollId" *ngIf="!submittedPolls[poll.PollId]">
+      <mat-tab [label]="poll.PollName" *ngIf="!submittedPolls[poll.PollId]">
         <!-- *For form -->
         <app-poll-tab
           [poll]="poll"
@@ -37,7 +38,7 @@
       </mat-tab>
     </div>
     <div class="polls-tab" *ngFor="let poll of odataSummary">
-      <mat-tab [label]="poll.PollId + results">
+      <mat-tab [label]="poll.PollName + results">
         <app-results-tab
           [chartData]="poll.options"
           [question]="poll.QText"

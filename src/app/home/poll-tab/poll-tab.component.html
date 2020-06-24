@@ -1,7 +1,14 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>{{ poll.QuesText }}</mat-card-title>
+      <mat-card-title
+        style="
+          font-size: 13px !important;
+          font-family: Arial, Helvetica, sans-serif, 'opensans' !important;
+          font-weight: bold;
+        "
+        >{{ poll.QuesText }}</mat-card-title
+      >
     </mat-card-header>
     <mat-card-content>
       <mat-radio-group

@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   odataPolls = [];
   odataSummary = [];
   submittedPolls = {};
+
   constructor(private http: HttpClient, private pollService: PollService) {}
   ngOnInit(): void {
     // this.polls = this.pollService.getQuestions();

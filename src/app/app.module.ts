@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { PollTabComponent } from './home/poll-tab/poll-tab.component';
 import { ResultsTabComponent } from './home/results-tab/results-tab.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ResultsTabComponent } from './home/results-tab/results-tab.component';
     FormsModule,
     HttpClientModule,
     ChartsModule,
+    CarouselModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

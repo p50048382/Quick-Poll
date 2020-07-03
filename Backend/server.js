@@ -1335,7 +1335,7 @@ var pollSummary1 = {
                           __text: "1",
                         },
                         Pct: {
-                          __text: "100",
+                          __text: "20",
                         },
                         "_xmlns:m":
                           "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",
@@ -1380,7 +1380,7 @@ var pollSummary1 = {
                           __text: "0",
                         },
                         Pct: {
-                          __text: "0",
+                          __text: "25",
                         },
                         "_xmlns:m":
                           "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",
@@ -1425,7 +1425,7 @@ var pollSummary1 = {
                           __text: "0",
                         },
                         Pct: {
-                          __text: "0",
+                          __text: "30",
                         },
                         "_xmlns:m":
                           "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",
@@ -1470,7 +1470,7 @@ var pollSummary1 = {
                           __text: "0",
                         },
                         Pct: {
-                          __text: "0",
+                          __text: "15",
                         },
                         "_xmlns:m":
                           "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",
@@ -1515,7 +1515,7 @@ var pollSummary1 = {
                           __text: "0",
                         },
                         Pct: {
-                          __text: "0",
+                          __text: "10",
                         },
                         "_xmlns:m":
                           "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",

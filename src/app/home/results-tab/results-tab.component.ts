@@ -24,10 +24,9 @@ export class ResultsTabComponent implements OnInit {
     tooltips: {
       callbacks: {
         label: function (tooltipItem, data) {
+          // * Change 1
           var name = data.labels[tooltipItem.index];
-          var dataset = data.datasets[tooltipItem.datasetIndex];
-          var currentValue = dataset.data[tooltipItem.index];
-          return ` ${name}: ${currentValue}%`;
+          return ` ${name}`;
         },
       },
     },
@@ -44,6 +43,28 @@ export class ResultsTabComponent implements OnInit {
   public pieChartData: number[] = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
+  public pieChartColors = [
+    {
+      backgroundColor: [
+        'rgba(0,0,255,0.9)',
+        'rgba(255,0,0,0.8)',
+        'rgba(0,255,0,0.7)',
+
+        'rgba(175,75,255,0.5)',
+        'rgba(125,125,125,1)',
+        'rgba(255,0,0,0.4)',
+        'rgba(125,255,0,0.3)',
+        'rgba(255,0,125,0.4)',
+        'rgba(0,125,255,0.3)',
+        'rgba(0,255,135,0.2)',
+        'rgba(255,0,200,0.6)',
+        'rgba(0,200,255,0.4)',
+        'rgba(0,255,75,0.5)',
+        'rgba(255,75,0,0.2)',
+        'rgba(0,75,255,0.3)',
+      ],
+    },
+  ];
   // public pieChartPlugins = [pluginDataLabels];
   //
 
@@ -51,15 +72,33 @@ export class ResultsTabComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.chartData);
-    console.log(this.question);
+    this.chartData.sort(this.compare);
+
+    console.log(this.chartData);
+    // console.log(this.question);
     this.setLabels(); //*For setting labels of the chart
     this.setData();
+  }
+
+  compare(a, b) {
+    const pctA = a.Pct;
+    const pctB = b.Pct;
+    let comparison = 0;
+    if (pctB > pctA) {
+      comparison = 1;
+    } else if (pctB < pctA) {
+      comparison = -1;
+    }
+    return comparison;
   }
 
   setLabels() {
     let label = [];
     this.chartData.forEach((element) => {
-      label.push(element.OptionText);
+      // *change 2
+      let lblPct = element.OptionText + ` (${element.Pct}%)`;
+      // let lblPct = element.OptionText + `: ${element.Pct}%`;
+      label.push(lblPct);
     });
     this.pieChartLabels = label;
   }

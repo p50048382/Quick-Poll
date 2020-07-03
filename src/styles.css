@@ -15,7 +15,7 @@ body {
 }
 .carousel-control-next,
 .carousel-control-prev {
-  height: 44px;
+  height: 44px !important;
 }
 .mat-card {
   border-radius: 0 !important ;
